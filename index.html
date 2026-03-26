@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pendaftaran Karnival Sinergi</title>
+
+<style>
+/* Cheerful theme colors */
+body {
+    font-family: 'Comic Sans MS', sans-serif;
+    background: linear-gradient(135deg, #FFD966, #FF6F61);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff8f0;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #FF6F61;
+    text-shadow: 1px 1px #FFD966;
+}
+
+h2 {
+    margin-top: 25px;
+    color: #FF914D;
+    border-bottom: 3px solid #FFD966;
+    padding-bottom: 5px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #FF6F61;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #FF914D;
+    font-size: 14px;
+}
+
+.section {
+    margin-bottom: 25px;
+}
+
+.participant, .guru {
+    border: 2px dashed #FF914D;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: #FFF0E5;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.add-btn {
+    background-color: #FF6F61;
+    color: white;
+}
+
+.submit-btn {
+    background-color: #FFD966;
+    color: #FF6F61;
+    width: 100%;
+    font-size: 16px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+    <h1>PENDAFTARAN PERTANDINGAN KARNIVAL SINERGI</h1>
+
+    <!-- SECTION 1: NAMA SEKOLAH -->
+    <div class="section">
+        <h2>NAMA SEKOLAH</h2>
+        <label>KOD SEKOLAH</label>
+        <input type="text" name="kod_sekolah">
+
+        <label>NAMA SEKOLAH</label>
+        <input type="text" name="nama_sekolah">
+    </div>
+
+    <!-- SECTION 2: PERTANDINGAN -->
+    <div class="section">
+        <h2>PERTANDINGAN</h2>
+        <label>Pilih Pertandingan</label>
+        <select name="pertandingan">
+            <option value="">--Sila Pilih--</option>
+            <option value="MathXPLORE">MathXPLORE</option>
+            <option value="Bridgemaster Challenge">Bridgemaster Challenge</option>
+            <option value="Lingo Dash">Lingo Dash</option>
+            <option value="Pidato: Wacana Inovasi">Pidato: Wacana Inovasi</option>
+            <option value="Kuiz Pintar Bahasa">Kuiz Pintar Bahasa</option>
+            <option value="Pesona Kolaj Busana Melayu Tradisional">Pesona Kolaj Busana Melayu Tradisional</option>
+            <option value="Sepak Bola Penalty">Sepak Bola Penalty</option>
+            <option value="Netball 3 on 3">Netball 3 on 3</option>
+            <option value="EduTech Canva AI Challenge">EduTech Canva AI Challenge</option>
+            <option value="Battle of Future Chefs">Battle of Future Chefs</option>
+            <option value="Aerobic Dance PPKI">Aerobic Dance PPKI</option>
+        </select>
+    </div>
+
+    <!-- SECTION 3: GURU PENGIRING -->
+    <div class="section">
+        <h2>GURU PENGIRING</h2>
+        <div id="gurus">
+            <div class="guru">
+                <label>NAMA GURU</label>
+                <input type="text" name="nama_guru[]">
+
+                <label>NO KAD PENGENALAN</label>
+                <input type="text" name="ic_guru[]">
+            </div>
+        </div>
+        <button type="button" class="add-btn" onclick="addGuru()">+ Tambah Guru</button>
+    </div>
+
+    <!-- SECTION 4: NAMA PESERTA / MURID -->
+    <div class="section">
+        <h2>NAMA PESERTA / MURID</h2>
+        <div id="participants">
+            <div class="participant">
+                <label>NAMA MURID</label>
+                <input type="text" name="nama_murid[]">
+
+                <label>NO KAD PENGENALAN</label>
+                <input type="text" name="ic_murid[]">
+            </div>
+        </div>
+        <button type="button" class="add-btn" onclick="addParticipant()">+ Tambah Peserta</button>
+    </div>
+
+    <button type="submit" class="submit-btn">HANTAR</button>
+</div>
+
+<script>
+// Add new participant
+function addParticipant() {
+    let container = document.getElementById("participants");
+
+    let div = document.createElement("div");
+    div.classList.add("participant");
+
+    div.innerHTML = `
+        <label>NAMA MURID</label>
+        <input type="text" name="nama_murid[]">
+
+        <label>NO KAD PENGENALAN</label>
+        <input type="text" name="ic_murid[]">
+    `;
+
+    container.appendChild(div);
+}
+
+// Add new guru pengiring
+function addGuru() {
+    let container = document.getElementById("gurus");
+
+    let div = document.createElement("div");
+    div.classList.add("guru");
+
+    div.innerHTML = `
+        <label>NAMA GURU</label>
+        <input type="text" name="nama_guru[]">
+
+        <label>NO KAD PENGENALAN</label>
+        <input type="text" name="ic_guru[]">
+    `;
+
+    container.appendChild(div);
+}
+</script>
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbzqvCpJUz-4ploe_EBoslUb2lisr-MxVdXQNb9AIjaOsxJgaAVUz05g_uG2WS34Pjoy/exec"; // Replace with your Apps Script URL
+
+document.querySelector(".submit-btn").addEventListener("click", function(e) {
+    e.preventDefault();
+
+    const data = {
+        kod_sekolah: document.querySelector('[name="kod_sekolah"]').value,
+        nama_sekolah: document.querySelector('[name="nama_sekolah"]').value,
+        pertandingan: document.querySelector('[name="pertandingan"]').value,
+        nama_guru: Array.from(document.querySelectorAll('[name="nama_guru[]"]')).map(i => i.value),
+        ic_guru: Array.from(document.querySelectorAll('[name="ic_guru[]"]')).map(i => i.value),
+        nama_murid: Array.from(document.querySelectorAll('[name="nama_murid[]"]')).map(i => i.value),
+        ic_murid: Array.from(document.querySelectorAll('[name="ic_murid[]"]')).map(i => i.value)
+    };
+
+    fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(data)
+    })
+    .then(response => alert("Data berjaya dihantar!"))
+    .catch(error => alert("Ralat! Sila cuba semula."));
+});
+</script>
+</body>
+</html>
